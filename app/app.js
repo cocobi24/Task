@@ -10,6 +10,7 @@ const app = express();
 
 //라우팅
 const home = require("./src/routes/home");
+const logger = require('./src/config/logger');
 
 //앱 세팅
 app.set("views", "./src/views");
