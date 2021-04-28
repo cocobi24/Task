@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/home/trello.css">
+    <script src="/js/home/trello/card-delete.js" defer></script>
+    <script src="/js/home/trello/card-edit.js" defer></script>
+    <script src="/js/home/trello/add-card.js" defer></script>
+    <script src="/js/home/trello/list-title-form.js" defer></script>
+    <script src="/js/home/trello/card-title-form.js" defer></script>
+    <script src="/js/home/trello/card.js" defer></script>
+    <script src="/js/home/trello/list.js" defer></script>
+    <script src="/js/home/trello/add-list.js" defer></script>
+    <script src="/js/home/trello/trello-main.js" defer></script>
+
+    <title>Dev_TEST</title>
 </head>
 <body>
-    여기는 루트입니다.
+
+    <header class="navigation-bar">
+        <h2>Trello</h2>
+        <nav>
+            <ul>
+                <% if( locals.is_logined == false ) { %>           
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/register">회원가입</a></li>
+                <% } else { %>
+                <li><%= locals.name %> 님 접속을 환영합니다</li>
+                <% console.log(name); %>
+                <li><a href="/logout">로그아웃</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <!-- <div class="navigation-bar">
+        Nav
+    </div> -->
+
+    <div id="container"></div>
+
+    <div id="container-main"></div>
+
+    <div id="card-edit">
+        <div id="card-edit-close">X</div>
+        <form>
+            <div id="card-edit-inputs">
+                <div>
+                    <label>Title:</label>
+                    <input id="card-edit-title">
+                </div>
+            </div>
+            <div>
+                <input id="card-edit-delete" type="button" value="Delete">
+                <input id="card-edit-submit" type="submit" value="Save">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
