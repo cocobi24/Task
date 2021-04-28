@@ -30,3 +30,4 @@ ECMAScript 6
 - [x] card - 카드 이동 
 
 ### ER 다이어그램
+![ERD](../app/src/public/css/images/ERD.PNG)
