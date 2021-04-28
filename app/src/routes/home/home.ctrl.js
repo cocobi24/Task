@@ -18,8 +18,6 @@ const output = {
                 is_logined : false
             });
         }
-    
-        // res.render("home/index");
     },
 
     login: (req, res) => {
@@ -61,11 +59,6 @@ const process = {
         client.query('select * from users where id=?',[id],(err,data)=>{
             // 로그인 확인
             console.log(data[0]);
-            console.log(id);
-            console.log(data[0].id);
-            console.log(data[0].psword);
-            console.log(id == data[0].id);
-            console.log(pw == data[0].psword);
             if(id == data[0].id || pw == data[0].psword){
                 console.log('로그인 성공');
                 // 세션에 추가
@@ -76,7 +69,6 @@ const process = {
                 req.session.save(function(){ // 세션 스토어에 적용하는 작업
                     res.render('home/index',{ // 정보전달
                         name : data[0].name,
-                        id : data[0].id,
                         is_logined : true
                     });
                 });

@@ -5,15 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/home/trello.css">
-    <script src="/js/home/trello/card-delete.js" defer></script>
-    <script src="/js/home/trello/card-edit.js" defer></script>
-    <script src="/js/home/trello/add-card.js" defer></script>
-    <script src="/js/home/trello/list-title-form.js" defer></script>
-    <script src="/js/home/trello/card-title-form.js" defer></script>
-    <script src="/js/home/trello/card.js" defer></script>
-    <script src="/js/home/trello/list.js" defer></script>
-    <script src="/js/home/trello/add-list.js" defer></script>
-    <script src="/js/home/trello/trello-main.js" defer></script>
+    <script src="/js/home/trello/card.ctrl.js" defer></script>
+    <script src="/js/home/trello/list.ctrl.js" defer></script>
+    <script src="/js/home/trello/trello.js" defer></script>
 
     <title>Dev_TEST</title>
 </head>
@@ -27,26 +21,18 @@
                     <li><a href="/login">로그인</a></li>
                     <li><a href="/register">회원가입</a></li>
                 <% } else { %>
-                <li><%= locals.name %> 님 접속을 환영합니다</li>
-                <% console.log(name); %>
                 <li><a href="/logout">로그아웃</a></li>
                 <% } %>
             </ul>
         </nav>
     </header>
 
-
-
-    <!-- <div class="navigation-bar">
-        Nav
-    </div> -->
-
     <div id="container"></div>
 
     <div id="container-main"></div>
 
     <div id="card-edit">
-        <div id="card-edit-close">X</div>
+        <div id="card-edit-close">x</div>
         <form>
             <div id="card-edit-inputs">
                 <div>
