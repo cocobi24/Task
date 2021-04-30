@@ -5,11 +5,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const session = require('express-session');
-const fs = require('fs');
-const path = require('path');
-const crypto = require('crypto');
-const FileStore = require('session-file-store')(session); // 세션을 파일에 저장
-const cookieParser = require('cookie-parser');
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -29,8 +24,7 @@ app.use(bodyParser.json());
 app.use(session({
     secret: 'DevT',
     resave: false,
-    saveUninitialized: true,
-    store : new FileStore()
+    saveUninitialized: true
       })
   );
 

@@ -21,6 +21,7 @@
                     <li><a href="/login">로그인</a></li>
                     <li><a href="/register">회원가입</a></li>
                 <% } else { %>
+                    <li><%= name + ' ' + '(' + id + ')' %> 님 환영합니다!</li>              
                 <li><a href="/logout">로그아웃</a></li>
                 <% } %>
             </ul>
@@ -36,7 +37,7 @@
         <form>
             <div id="card-edit-inputs">
                 <div>
-                    <label>Title:</label>
+                    <label>Content:</label>
                     <input id="card-edit-title">
                 </div>
             </div>

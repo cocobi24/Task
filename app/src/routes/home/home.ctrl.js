@@ -8,10 +8,12 @@ const client = require('../../config/db');
 const output = {
     home: (req, res) => {
         logger.info(`GET / 304 "홈 화면으로 이동"`);
+
         if(req.session.is_logined == true){
             res.render('home/index',{
                 is_logined : req.session.is_logined,
-                name : req.session.name
+                name : req.session.name,
+                id : req.session.uid
             });
         }else{
             res.render('home/index',{
@@ -55,26 +57,26 @@ const process = {
         const id = body.id;
         const pw = body.pw;
         const name = body.name
-
+        
         client.query('select * from users where id=?',[id],(err,data)=>{
             // 로그인 확인
             console.log(data[0]);
-            if(id == data[0].id || pw == data[0].psword){
-                console.log('로그인 성공');
-                // 세션에 추가
-                req.session.is_logined = true;
-                req.session.name = data.name;
-                // req.session.id = data.id;
-                req.session.pw = data.psword;
-                req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                    res.render('home/index',{ // 정보전달
-                        name : data[0].name,
-                        is_logined : true
+            if(data[0]){
+                if(id == data[0].id || pw == data[0].psword){
+                    console.log('로그인 성공');
+                    // 세션에 추가
+                    req.session.is_logined = true;
+                    req.session.uid = data[0].id;
+                    req.session.name = data[0].name;
+                    
+                    req.session.save(function(err){ // 세션 스토어에 적용하는 작업
+                        res.render('home/index',{ // 정보전달
+                        });
                     });
-                });
-            }else{
-                console.log('로그인 실패');
-                res.render('login');
+                }else{
+                    console.log('로그인 실패');
+                    res.render('login');
+                }
             }
         });
 
