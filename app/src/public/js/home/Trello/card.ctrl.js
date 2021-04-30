@@ -1,13 +1,11 @@
-'use strict'
-
-var dragTracker =
+const dragTracker =
 {
 	id: undefined,
 	list: undefined
-}
+};
 
 function buildCardNode() {
-	var node = document.createElement('div')
+	const node = document.createElement('div');
 	node.draggable = true
 	node.innerHTML =
 		'<div class="card-title"></div>';
@@ -40,7 +38,7 @@ function Card(list, title) {
 
 	this.node.ondrop = (function (board) {
 		return function (evt) {
-			var id = dragTracker.id
+			const id = dragTracker.id
 				, targetId = this.getAttribute('card-id')
 				, source = board.cards[id]
 				, target = board.cards[targetId]
@@ -78,29 +76,47 @@ function Card(list, title) {
 }
 
  function buildCardTitleForm() {
-	var node = document.createElement('form')
+	const node = document.createElement('form');
 	node.innerHTML =
-		'<div class="newitem-title-wrapper">' +
-		'<textarea class="trello-new-card-title-input" type="text"></textarea>' +
-		'<input class="trello-new-card-title-submit" type="submit" value="Add">' +
+		'<div class="newitem-title-wrapper" id="newCard">' +
+			'<textarea class="trello-new-card-title-input" type="text"></textarea>' +
+			'<input class="trello-new-card-title-submit" type="submit" value="Add">' +
+			// '<span id="trello-list-title-exit" onclick="deleteCard()">&#10060;</span>'+
 		'</div>'
 	node.style.display = 'none'
 	return node
 }
 
+// function deleteCard() {
+// 	const div = document.getElementById('newCard');
+// 	if(div.style.display !== 'none')  {
+// 		div.style.display = 'none';
+// 	}
+// }
+
  function addCardTrello(list) {
-	return function () {
-		var titleTextarea = list.titleFormNode
+	return function deleteCard() {
+		const titleTextarea = list.titleFormNode
 			.getElementsByClassName('trello-new-card-title-input')[0]
 		list.titleFormNode.getElementsByClassName('trello-new-card-title-submit')[0]
 			.onclick = titleSubmit
-		list.titleFormNode.style.display = 'block';
+
+		const div = document.getElementById('newCard')
+
+		if(list.titleFormNode.style.display === 'none' || div.style.display === 'none') {
+			div.style.display = 'block';
+			list.titleFormNode.style.display = 'block';
+		} else {
+			list.titleFormNode.style.display = 'none';
+			document.getElementsByClassName('trello-new-card-title-input')[0].value = '';
+		}
+
 		titleTextarea.focus();
 
 		function titleSubmit(evt) {
 			evt.preventDefault()
-			var title = titleTextarea.value.trim()
-				, card;
+			const title = titleTextarea.value.trim();
+			let card;
 
 			list.titleFormNode.style.display = 'none';
 			titleTextarea.value = '';
@@ -108,19 +124,19 @@ function Card(list, title) {
 				return
 			}
 
-				card = new Card(list, title);
+			card = new Card(list, title);
 			list.board.registerCard(card, list.cards.length);
 			list.cardsNode.insertBefore(card.node, list.cards[list.cards.length - 1].node);
-			list.cards.push(card);
+			
 		}
 	}
 }
 
- var cardDeleteTrello = {};
- var currentBoard;
+const cardDeleteTrello = {};
+let currentBoard;
  
  cardDeleteTrello.delete = function () {
-     var index = currentBoard.cards[cardEdit.card.id].index
+	const index = currentBoard.cards[cardEdit.card.id].index;
  
      currentBoard.unregisterCard(cardEdit.card)
      currentBoard.reregisterSubsequent(cardEdit.card.list, index + 1, -1)
@@ -132,13 +148,12 @@ function Card(list, title) {
      cardEdit.card = undefined
  }
  
-//
- var cardEdit =
+ const cardEdit =
 { node: document.getElementById('card-edit')
 	, windowOverlay: document.getElementById('container-main')
 	, titleNode: document.getElementById('card-edit-title')
 	, card: undefined
-}
+};
 
 cardEdit.clearInputs = function () {
 	cardEdit.titleNode.value = '';
@@ -158,7 +173,7 @@ cardEdit.show = function () {
 
 cardEdit.submit = function (evt) {
 	evt.preventDefault()
-	var title = cardEdit.titleNode.value.trim();
+	const title = cardEdit.titleNode.value.trim();
 
 	if (title) {
 		cardEdit.card.title = title
@@ -167,3 +182,4 @@ cardEdit.submit = function (evt) {
 	}
 	cardEdit.close()
 }
+

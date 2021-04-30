@@ -1,5 +1,6 @@
 'use strict'
 
+//
 function List(board, title, index, dummyList) {
 	this.board = board
 	this.dummyList = dummyList
@@ -16,7 +17,7 @@ function List(board, title, index, dummyList) {
 	this.node.appendChild(this.titleNode)
 
 	if (!dummyList) {
-		var dummyCard = new Card(this, 'Add a card...', 0)
+		const dummyCard = new Card(this, 'Add a card...', 0);
 
 		this.titleNode.draggable = true
 		this.cards = [dummyCard]
@@ -24,7 +25,7 @@ function List(board, title, index, dummyList) {
 
 		this.titleFormNode = buildCardTitleForm()
 
-		for (var i = 0; i < this.cards.length; ++i) {
+		for (let i = 0; i < this.cards.length; ++i) {
 			this.cardsNode.appendChild(this.cards[i].node)
 		}
 		dummyCard.titleNode.onclick = addCardTrello(this)
@@ -35,7 +36,7 @@ function List(board, title, index, dummyList) {
 	}
 
 	this.titleNode.ondragstart = function (evt) {
-		var index = parseInt(evt.target.getAttribute('list-index'), 10)
+		const index = parseInt(evt.target.getAttribute('list-index'), 10);
 		dragTracker.list = currentBoard.lists[index]
 		evt.dataTransfer.effectAllowed = 'move'
 	}
@@ -47,10 +48,10 @@ function List(board, title, index, dummyList) {
 	}
 
 	this.titleNode.ondrop = function (evt) {
-		var sourceIndex = dragTracker.list.index
-			, targetIndex = parseInt(this.getAttribute('list-index'), 10)
-			, numLists = board.lists.length
-			, i
+		const sourceIndex = dragTracker.list.index;
+		const targetIndex = parseInt(this.getAttribute('list-index'), 10);
+		const numLists = board.lists.length;
+		let i;
 
 		if (sourceIndex === targetIndex) { return }
 
@@ -80,11 +81,12 @@ function List(board, title, index, dummyList) {
 }
 
 function buildListTitleForm() {
-	var node = document.createElement('form')
+	const node = document.createElement('form');
 	node.innerHTML =
-		'<div class="newitem-title-wrapper">' +
-		'<input id="trello-list-title-input" type="text">' +
-		'<input id="trello-list-title-submit" type="submit" value="Save">' +
+		'<div class="newitem-title-wrapper" id="newList">' +
+			'<input id="trello-list-title-input" type="text">' +
+			'<input id="trello-list-title-submit" type="submit" value="Save">' +
+			'<span id="trello-list-title-exit" onclick="deleteList()">&#10060;</span>'+
 		'</div>'
 	node.style.display = 'none'
 	return node
@@ -92,17 +94,26 @@ function buildListTitleForm() {
 
 function addListTrello(board) {
 	return function () {
-		var titleInput = document.getElementById('trello-list-title-input')
+		const titleInput = document.getElementById('trello-list-title-input');
+		const div = document.getElementById('newList');
 
 		document.getElementById('trello-list-title-submit').onclick = titleButtonClick
-		board.titleFormNode.style.display = 'block'
+
+		if(board.titleFormNode.style.display === 'none' || div.style.display === 'none') {
+			div.style.display = 'block';
+			board.titleFormNode.style.display = 'block';
+		} else {
+			board.titleFormNode.style.display = 'none';
+			document.getElementById('trello-list-title-input').value = '';
+		}
 		titleInput.focus()
+
 
 		function titleButtonClick(evt) {
 			evt.preventDefault()
-			var title = titleInput.value.trim()
-				, index = board.lists.length - 1
-				, list
+			const title = titleInput.value.trim();
+			const index = board.lists.length - 1;
+			let list;
 
 			board.titleFormNode.style.display = 'none'
 			titleInput.value = ''
@@ -116,5 +127,13 @@ function addListTrello(board) {
 				board.lists[index + 1].node)
 			board.lists[index + 1].titleNode.setAttribute('list-index', index + 1)
 		}
+	}
+}
+
+function deleteList() {
+	const div = document.getElementById('newList');
+	if(div.style.display !== 'none')  {
+		div.style.display = 'none';
+		document.getElementById('trello-list-title-input').value = '';
 	}
 }
