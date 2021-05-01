@@ -14,7 +14,6 @@
 		this.listsNode = document.createElement('div')
 
 		this.node.id = 'board'
-		this.titleNode.id = 'trello-title-board'
 		this.listsNode.id = 'trello-canvas-board'
 
 		// 리스트 form
@@ -75,7 +74,7 @@
 
 	//보드
 	document.body.onload = function () {
-		const title = 'Add New Board'
+		const title = ''
 			, board = new Board(title);
 
 		board.render()

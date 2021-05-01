@@ -2,6 +2,7 @@
 
 const id = document.querySelector("#id"),
     name = document.querySelector("#name"),
+    dept = document.querySelector("#dept"),
   psword = document.querySelector("#psword"),
   confirmPsword = document.querySelector("#confirm-psword"),
   registerBtn = document.querySelector("#button");
@@ -16,6 +17,7 @@ function register() {
     const req = {
         id: id.value,
         name: name.value,
+        dept: dept.value,
         psword: psword.value
     };
 

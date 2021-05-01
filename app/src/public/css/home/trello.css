@@ -187,20 +187,13 @@ html {
     background-color: #40a75f;
     color: #fff;
   }
-  
-  #trello-title-board {
-    padding: 10px 8px;
-    font-size: 18px;
-    line-height: 30px;
-    color: #f6f6f6;
-    font-weight: bold;
-  }
-  
+
   #trello-canvas-board {
     align-items: flex-start;
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    padding-top: 15px;
     padding-bottom: 10px;
   }
   

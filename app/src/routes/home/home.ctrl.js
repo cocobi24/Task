@@ -13,7 +13,8 @@ const output = {
             res.render('home/index',{
                 is_logined : req.session.is_logined,
                 name : req.session.name,
-                id : req.session.uid
+                id : req.session.uid,
+                dept : req.session.dept
             });
         }else{
             res.render('home/index',{
@@ -68,6 +69,7 @@ const process = {
                     req.session.is_logined = true;
                     req.session.uid = data[0].id;
                     req.session.name = data[0].name;
+                    req.session.dept = data[0].dept;
                     
                     req.session.save(function(err){ // 세션 스토어에 적용하는 작업
                         res.render('home/index',{ // 정보전달
