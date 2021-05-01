@@ -1,6 +1,6 @@
 'use strict'
 
-//
+//리스트 생성자 함수
 function List(board, title, index, dummyList) {
 	this.board = board
 	this.dummyList = dummyList
@@ -23,6 +23,7 @@ function List(board, title, index, dummyList) {
 		this.cards = [dummyCard]
 		board.registerCard(this.cards[0], 0)
 
+		// 카드 form
 		this.titleFormNode = buildCardTitleForm()
 
 		for (let i = 0; i < this.cards.length; ++i) {
@@ -35,6 +36,7 @@ function List(board, title, index, dummyList) {
 		dummyCard.node.onclick = undefined
 	}
 
+	// 드래그앤드롭
 	this.titleNode.ondragstart = function (evt) {
 		const index = parseInt(evt.target.getAttribute('list-index'), 10);
 		dragTracker.list = currentBoard.lists[index]
@@ -80,6 +82,8 @@ function List(board, title, index, dummyList) {
 	}
 }
 
+
+// 리스트 form 생성
 function buildListTitleForm() {
 	const node = document.createElement('form');
 	node.innerHTML =
@@ -92,6 +96,9 @@ function buildListTitleForm() {
 	return node
 }
 
+
+
+//리스트 추가
 function addListTrello(board) {
 	return function () {
 		const titleInput = document.getElementById('trello-list-title-input');
@@ -130,6 +137,7 @@ function addListTrello(board) {
 	}
 }
 
+//리스트 닫기(제거)
 function deleteList() {
 	const div = document.getElementById('newList');
 	if(div.style.display !== 'none')  {

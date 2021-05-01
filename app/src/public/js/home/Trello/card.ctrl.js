@@ -4,6 +4,7 @@ const dragTracker =
 	list: undefined
 };
 
+//cardNode 빌드
 function buildCardNode() {
 	const node = document.createElement('div');
 	node.draggable = true
@@ -12,6 +13,8 @@ function buildCardNode() {
 	return node
 }
 
+
+// 카드 생성자 함수
 function Card(list, title) {
 	this.id = list.board.getNextId()
 	this.list = list
@@ -23,6 +26,8 @@ function Card(list, title) {
 	this.node.setAttribute('card-id', this.id)
 	this.titleNode.appendChild(document.createTextNode(this.title))
 
+
+// 카드를 다른 리스트로 드래그 
 	this.node.ondragstart = (function (id) {
 		return function (evt) {
 			dragTracker.id = id
@@ -39,7 +44,7 @@ function Card(list, title) {
 	this.node.ondrop = (function (board) {
 		return function (evt) {
 			const id = dragTracker.id
-				, targetId = this.getAttribute('card-id')
+				, targetId = this.getAttribute('card-id') // this = 드롭대상
 				, source = board.cards[id]
 				, target = board.cards[targetId]
 
@@ -66,6 +71,8 @@ function Card(list, title) {
 		dragTracker.id = undefined
 	}
 
+
+	// 카드 편집
 	this.node.onclick = (function (card) {
 		return function () {
 			cardEdit.card = card
@@ -75,17 +82,33 @@ function Card(list, title) {
 	}(this))
 }
 
+
+// 카드 form 생성
+
  function buildCardTitleForm() {
 	const node = document.createElement('form');
 	node.innerHTML =
 		'<div class="newitem-title-wrapper" id="newCard">' +
-			'<textarea class="trello-new-card-title-input" type="text"></textarea>' +
-			'<input class="trello-new-card-title-submit" type="submit" value="Add">' +
+			'<textarea class="trello-new-card-title-input" onkeyup="textEnter();" type="text"></textarea>' +
+			'<input class="trello-new-card-title-submit"  type="submit" value="Add">' +
 			// '<span id="trello-list-title-exit" onclick="deleteCard()">&#10060;</span>'+
 		'</div>'
 	node.style.display = 'none'
 	return node
 }
+
+function textEnter(){
+	for (let i = 0; i <= 10; ++i) {
+		document.getElementsByClassName('trello-new-card-title-input')[i]
+		.addEventListener('keydown',function(event){
+			if(window.event.keyCode ==13){
+			event.preventDefault();
+				document.getElementsByClassName('trello-new-card-title-submit')[i].click();
+			}
+	})
+    };
+};
+
 
 // function deleteCard() {
 // 	const div = document.getElementById('newCard');
@@ -94,6 +117,7 @@ function Card(list, title) {
 // 	}
 // }
 
+// 카드 추가
  function addCardTrello(list) {
 	return function deleteCard() {
 		const titleTextarea = list.titleFormNode
@@ -132,6 +156,8 @@ function Card(list, title) {
 	}
 }
 
+
+// 카드 제거
 const cardDeleteTrello = {};
 let currentBoard;
  
@@ -148,6 +174,7 @@ let currentBoard;
      cardEdit.card = undefined
  }
  
+//카드편집
  const cardEdit =
 { node: document.getElementById('card-edit')
 	, windowOverlay: document.getElementById('container-main')
@@ -159,6 +186,7 @@ cardEdit.clearInputs = function () {
 	cardEdit.titleNode.value = '';
 }
 
+//카드편집 닫기
 cardEdit.close = function() {
 	cardEdit.card = undefined
 	cardEdit.clearInputs()
@@ -166,11 +194,13 @@ cardEdit.close = function() {
 	cardEdit.windowOverlay.style.display = 'none'
 }
 
+//카드편집 보이기
 cardEdit.show = function () {
 	cardEdit.windowOverlay.style.display = 'block'
 	cardEdit.node.style.display = 'block'
 }
 
+//카드 수정한 내용 저장
 cardEdit.submit = function (evt) {
 	evt.preventDefault()
 	const title = cardEdit.titleNode.value.trim();

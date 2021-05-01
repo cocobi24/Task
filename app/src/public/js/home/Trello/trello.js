@@ -1,6 +1,7 @@
 'use strict'
 (function () {
 
+	//보드 생성자 함수
 	function Board(title) {
 		let nextId = 0;
 
@@ -16,6 +17,7 @@
 		this.titleNode.id = 'trello-title-board'
 		this.listsNode.id = 'trello-canvas-board'
 
+		// 리스트 form
 		this.titleFormNode = buildListTitleForm()
 		this.titleNode.appendChild(document.createTextNode(this.title))
 
@@ -63,12 +65,15 @@
 
 	cardEdit.windowOverlay.onclick = cardEdit.close
 
+	//카드편집 닫기
 	window.onkeydown = function (evt) {
 		if (evt.keyCode === 27) {
 			cardEdit.close()
 		}
 	}
 
+
+	//보드
 	document.body.onload = function () {
 		const title = 'Add New Board'
 			, board = new Board(title);

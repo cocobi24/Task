@@ -37,3 +37,13 @@ function login() {
     });
 
 }
+
+function loginEnter(){
+	document.getElementById('psword')
+	.addEventListener('keydown',function(event){
+        if(window.event.keyCode ==13){
+        event.preventDefault();
+            document.getElementById('button').click();
+        }
+    });
+};
