@@ -18,11 +18,11 @@ ECMAScript 6
 * Drag & Drop으로 선택한 카드 다른 리스트로 이동 가능
 
 ### ER 다이어그램
-![11](https://user-images.githubusercontent.com/73522666/116391828-98434300-a85a-11eb-8e6b-5563dffdf99d.PNG)
+![59262](https://user-images.githubusercontent.com/73522666/116784949-f3329f80-aad1-11eb-9f93-69f358a6e309.PNG)
 
 ### 화면구현
 ![dd3](https://user-images.githubusercontent.com/73522666/116413758-df3d3280-a872-11eb-9eda-efcf78265ee6.PNG)
 ![dd4](https://user-images.githubusercontent.com/73522666/116413961-085dc300-a873-11eb-973e-0407d80ec9cb.PNG)
 ![ddd2](https://user-images.githubusercontent.com/73522666/116413739-db111500-a872-11eb-9919-dd52b0233702.PNG)
-![ddd](https://user-images.githubusercontent.com/73522666/116413940-04ca3c00-a873-11eb-82af-f7bc86e9757c.PNG)
+![2233](https://user-images.githubusercontent.com/73522666/116785043-718f4180-aad2-11eb-9c8e-217db22f3007.PNG)
 ![dd5](https://user-images.githubusercontent.com/73522666/116413956-0693ff80-a873-11eb-8082-2bd15be0fd9c.PNG)
