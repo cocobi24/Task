@@ -3,6 +3,8 @@ Trello의 일부 기능을 구현한 프로젝트입니다.
 Back-end 에서는 Node.js로 서버 작업을 하였으며  
 Front-end 작업은 Vanilla JS만으로 작업하였습니다.  
 
+https://user-images.githubusercontent.com/73522666/116801036-26604780-ab41-11eb-8ca9-5917e0e087ff.mp4
+
 ### 개발도구
 Node.js(v14.16.1)  
 Express(v4.17.1)  
