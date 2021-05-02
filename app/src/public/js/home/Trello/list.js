@@ -96,8 +96,6 @@ function buildListTitleForm() {
 	return node
 }
 
-
-
 //리스트 추가
 function addListTrello(board) {
 	return function () {

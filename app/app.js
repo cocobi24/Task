@@ -13,6 +13,7 @@ const app = express();
 
 //라우팅
 const home = require("./src/routes/home");
+const trello = require("./src/routes/trello");
 const logger = require('./src/config/logger');
 
 //앱 세팅
@@ -32,7 +33,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended :true }));
 
 app.use("/", home); // use = 미들웨어를 등록해주는 메서드
-
+app.use("/", trello);
 
 module.exports = app;
 

@@ -121,6 +121,24 @@ html {
     cursor: pointer;
   }
   
+  #card-edit-close img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  #card-edit-delete {
+    float: left;
+    width: 70px;
+    background-color: #af1a00;
+    color: #fff;
+  }
+  
+  #card-edit-submit {
+    float: right;
+    width: 70px;
+    background-color: #40a75f;
+    color: #fff;
+  }
   
   #container-main {
     display: none;
@@ -152,7 +170,6 @@ html {
     margin-right:20px;
   }
 
-
   header ul {
     list-style: none;
     display: flex;
@@ -167,25 +184,6 @@ html {
     display: flex;
     align-items: center;
     margin-right:20px;
-  }
-
-  #card-edit-close img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  #card-edit-delete {
-    float: left;
-    width: 70px;
-    background-color: #af1a00;
-    color: #fff;
-  }
-  
-  #card-edit-submit {
-    float: right;
-    width: 70px;
-    background-color: #40a75f;
-    color: #fff;
   }
 
   #trello-canvas-board {
