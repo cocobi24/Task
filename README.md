@@ -21,4 +21,5 @@ https://user-images.githubusercontent.com/73522666/116801036-26604780-ab41-11eb-
   
   
 ### ER 다이어그램
-![erd](https://user-images.githubusercontent.com/73522666/116818367-ed0df300-aba5-11eb-8cf7-df12041cb25c.PNG)
+![erd](https://user-images.githubusercontent.com/73522666/116849393-a530af80-ac29-11eb-9f73-1f713b9a82fa.PNG)
+
