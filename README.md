@@ -16,8 +16,8 @@ ECMAScript 6
 * 리스트 CRUD
 * 카드 CRUD
 * AWS RDS 데이터베이스 구축
-* 로그인할 경우 서버에 리스트 및 카드 저장
-* Drag & Drop으로 선택한 카드 다른 리스트로 이동 가능
+* 로그인할 경우 입력한 리스트/카드 서버 저장
+* Drag & Drop으로 선택한 리스트/카드 이동 가능
   
   
 ### 시연영상
@@ -25,5 +25,4 @@ https://user-images.githubusercontent.com/73522666/116801036-26604780-ab41-11eb-
   
   
 ### ER 다이어그램
-![59262](https://user-images.githubusercontent.com/73522666/116784949-f3329f80-aad1-11eb-9f93-69f358a6e309.PNG)
-
+![erd](https://user-images.githubusercontent.com/73522666/116818367-ed0df300-aba5-11eb-8cf7-df12041cb25c.PNG)
