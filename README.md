@@ -1,15 +1,11 @@
 # Trello project
-Trello의 일부 기능을 구현한 프로젝트입니다.  
-Back-end 에서는 Node.js로 서버 작업을 하였으며  
-Front-end 작업은 Vanilla JS만으로 작업하였습니다.  
-  
+Trello의 일부 기능을 구현한 프로젝트입니다.
   
 ### 개발도구
 Node.js(v14.16.1)  
 Express(v4.17.1)  
 MySQL 8.0  
 ECMAScript 6  
-  
   
 ### 구현 기능  
 * 회원 기능 (가입,로그인/아웃,세션)
