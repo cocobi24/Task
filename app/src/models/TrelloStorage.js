@@ -16,8 +16,8 @@ class TrelloStorage {
 
     static async listC(listCInfo){
         return new Promise((resolve, reject) => {
-            const query = "INSERT list (id,lname) VALUES (?, ?);";
-            db.query(query, [listCInfo.id, listCInfo.lname], (err) => {
+            const query = "INSERT list (id, dept, lname) VALUES (?, ?, ?);";
+            db.query(query, [listCInfo.id, listCInfo.dept, listCInfo.lname], (err) => {
                 if (err) reject(`${err}`);
                 else resolve({ success: true });
             });

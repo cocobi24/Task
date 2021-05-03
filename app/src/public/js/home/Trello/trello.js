@@ -1,4 +1,3 @@
-'use strict'
 (function () {
 
 	//보드 생성자 함수

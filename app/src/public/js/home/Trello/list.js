@@ -86,7 +86,6 @@ function List(board, title, index, dummyList) {
 // 리스트 form 생성
 function buildListTitleForm() {
 	const node = document.createElement('form');
-	const ejs= '<%= locals.name %>';
 	node.innerHTML =
 		`<div class="newitem-title-wrapper" id="newList">
 			<input id="trello-list-title-input" type="text">

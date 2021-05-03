@@ -8,6 +8,8 @@
     <script src="/js/home/trello/card.js" defer></script>
     <script src="/js/home/trello/list.js" defer></script>
     <script src="/js/home/trello/trello.js" defer></script>
+    <script src="/js/home/trello/card.page.js" defer></script>
+    <script src="/js/home/trello/list.page.js" defer></script>
 
     <title>Dev_TEST</title>
 </head>
@@ -29,9 +31,7 @@
     </header>
 
     <div id="container"></div>
-
     <div id="container-main"></div>
-
     <div id="card-edit">
         <div id="card-edit-close">x</div>
         <form>
@@ -47,5 +47,19 @@
             </div>
         </form>
     </div>
+    
+    <script>
+        const userid = "<%= locals.id%>";
+        const username = "<%= locals.name%>";
+        const userdept = "<%= locals.dept%>";
+
+        const userlno = "<%= locals.lno%>";
+        const userlname = "<%= locals.lname%>";
+        const userl_date = "<%= locals.l_date%>";
+
+        const usercno = "<%= locals.cno%>";
+        const userdescript = "<%= locals.descript%>";
+        const userl_date = "<%= locals.l_date%>";
+    </script>
 </body>
 </html>

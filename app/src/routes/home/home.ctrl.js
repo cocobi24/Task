@@ -12,9 +12,15 @@ const output = {
         if(req.session.is_logined == true){
             res.render('home/index',{
                 is_logined : req.session.is_logined,
-                name : req.session.name,
                 id : req.session.uid,
-                dept : req.session.dept
+                name : req.session.name,
+                dept : req.session.dept,
+                lno : req.session.lno,
+                lname : req.session.lname,
+                l_date : req.session.l_date,
+                cno : req.session.cno,
+                descript : req.session.descript,
+                l_date : req.session.l_date
             });
         }else{
             res.render('home/index',{
@@ -70,6 +76,38 @@ const process = {
                     req.session.uid = data[0].id;
                     req.session.name = data[0].name;
                     req.session.dept = data[0].dept;
+
+                    // 접속한 회원의 list 정보 가져오기
+                    const lno = body.lno;
+                    const lname = body.lname;
+                    const l_date = body.l_date
+                    
+                    client.query('select * from list where id=?',[id],(err,data)=>{
+                        console.log(data[0]);
+                        if(data[0]){
+                                console.log('로그인 성공');
+                                req.session.lno = data.lno;
+                                req.session.lname = data.lname;
+                                req.session.l_date = data.l_date;
+                                
+                        }
+                    });
+
+                    // 접속한 회원 card 정보 가져오기
+                    const cno = body.cno;
+                    const descript = body.descript;
+                    const c_date = body.c_date
+                    
+                    client.query('select * from card where lno = any(select lno from list where id=?)',[id],(err,data)=>{
+                        console.log(data[0]);
+                        if(data[0]){
+                                console.log('로그인 성공');
+                                req.session.cno = data.cno;
+                                req.session.descript = data.descript;
+                                req.session.c_date = data.c_date;
+                                
+                        }
+                    });
                     
                     req.session.save(function(err){ // 세션 스토어에 적용하는 작업
                         res.render('home/index',{ // 정보전달
