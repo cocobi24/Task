@@ -85,7 +85,6 @@ const process = {
                     client.query('select * from list where id=?',[id],(err,data)=>{
                         console.log(data[0]);
                         if(data[0]){
-                                console.log('로그인 성공');
                                 req.session.lno = data.lno;
                                 req.session.lname = data.lname;
                                 req.session.l_date = data.l_date;
@@ -101,7 +100,6 @@ const process = {
                     client.query('select * from card where lno = any(select lno from list where id=?)',[id],(err,data)=>{
                         console.log(data[0]);
                         if(data[0]){
-                                console.log('로그인 성공');
                                 req.session.cno = data.cno;
                                 req.session.descript = data.descript;
                                 req.session.c_date = data.c_date;

@@ -1,4 +1,5 @@
 "use strict";
+
 if(userid){
     const cno =  document.querySelector("#cno"),    
         descript = document.querySelector("#descript"),
