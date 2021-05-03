@@ -23,3 +23,5 @@ https://user-images.githubusercontent.com/73522666/116801036-26604780-ab41-11eb-
 ### ER 다이어그램
 ![erd](https://user-images.githubusercontent.com/73522666/116849393-a530af80-ac29-11eb-9f73-1f713b9a82fa.PNG)
 
+### 프로젝트 구조
+![디렉토리](https://user-images.githubusercontent.com/73522666/116858113-d2388e80-ac38-11eb-851c-e9d880172ab3.PNG)
