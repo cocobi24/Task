@@ -2,8 +2,8 @@
 
 const logger = require("../../config/logger");
 const Trello = require("../../models/Trello");
-const session = require('express-session');
-const client = require('../../config/db');
+// const session = require('express-session');
+// const client = require('../../config/db');
 
 const output = {
 
@@ -58,7 +58,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -72,7 +72,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -86,7 +86,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -100,7 +100,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -114,7 +114,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -128,7 +128,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -142,7 +142,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);
@@ -156,7 +156,7 @@ const process = {
         const url = {
             method: "POST",
             path: "/",
-            status: response.err ? 409 : 201
+            status: response.err ? 400 : 201
         };
 
         log(response, url);

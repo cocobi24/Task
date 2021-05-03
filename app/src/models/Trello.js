@@ -10,7 +10,7 @@ class Trello {
     async listRead() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.listR(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -20,7 +20,7 @@ class Trello {
     async listCreate() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.listC(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -30,7 +30,7 @@ class Trello {
     async listUpdate() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.listU(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -40,7 +40,7 @@ class Trello {
     async listDelete() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.listD(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -50,7 +50,7 @@ class Trello {
     async cardRead() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.cardR(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -60,7 +60,7 @@ class Trello {
     async cardCreate() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.cardC(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -70,7 +70,7 @@ class Trello {
     async cardUpdate() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.cardU(client);
             return response;
         } catch (err) {
             return { success: false, err};
@@ -80,7 +80,7 @@ class Trello {
     async cardDelete() {
         const client = this.body;
         try {
-            const response = await TrelloStorage.save(client);
+            const response = await TrelloStorage.cardD(client);
             return response;
         } catch (err) {
             return { success: false, err};

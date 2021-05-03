@@ -27,6 +27,13 @@ class User {
     async register() {
         const client = this.body;
         try {
+            const user = await UserStorage.getUserInfo(client.id);
+            if (user) {
+                if (user.id === client.id) {
+                    return { success: false, msg: "이미 존재하는 아이디입니다." };
+                }
+                return { success: true };
+            }
             const response = await UserStorage.save(client);
             return response;
         } catch (err) {

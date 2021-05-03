@@ -86,12 +86,13 @@ function List(board, title, index, dummyList) {
 // 리스트 form 생성
 function buildListTitleForm() {
 	const node = document.createElement('form');
+	const ejs= '<%= locals.name %>';
 	node.innerHTML =
-		'<div class="newitem-title-wrapper" id="newList">' +
-			'<input id="trello-list-title-input" type="text">' +
-			'<input id="trello-list-title-submit" type="submit" value="Save">' +
-			'<span id="trello-list-title-exit" onclick="deleteList()">&#10060;</span>'+
-		'</div>'
+		`<div class="newitem-title-wrapper" id="newList">
+			<input id="trello-list-title-input" type="text">
+			<input id="trello-list-title-submit" type="submit" value="Save">
+			<span id="trello-list-title-exit" onclick="deleteList()">&#10060;</span>
+		</div>`
 	node.style.display = 'none'
 	return node
 }

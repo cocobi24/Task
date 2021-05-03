@@ -1,3 +1,5 @@
+"use strict";
+
 const dragTracker =
 {
 	id: undefined,
